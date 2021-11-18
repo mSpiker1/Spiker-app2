@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane prefHeight="300.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inv.inventorymanagementapplication.NewItem">
+   <children>
+      <Button layoutX="31.0" layoutY="255.0" mnemonicParsing="false" text="Save new item" />
+      <Label layoutX="155.0" layoutY="14.0" text="Create a New Item">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="199.0" text="Enter new item price:" />
+      <Label layoutX="31.0" layoutY="141.0" text="Enter new serial number:" />
+      <Label layoutX="30.0" layoutY="44.0" text="Enter new item name:" />
+      <TextField layoutX="31.0" layoutY="216.0" promptText="Enter price..." />
+      <TextField layoutX="192.0" layoutY="158.0" prefHeight="25.0" prefWidth="39.0" promptText="xxx" />
+      <TextField layoutX="135.0" layoutY="158.0" prefHeight="25.0" prefWidth="39.0" promptText="xxx" />
+      <TextField layoutX="77.0" layoutY="158.0" prefHeight="25.0" prefWidth="39.0" promptText="xxx" />
+      <TextArea layoutX="28.0" layoutY="61.0" prefHeight="67.0" prefWidth="394.0" promptText="Enter item name..." />
+      <TextField layoutX="30.0" layoutY="158.0" prefHeight="25.0" prefWidth="28.0" promptText="A" />
+      <Label layoutX="180.0" layoutY="162.0" text="-" />
+      <Label layoutX="123.0" layoutY="162.0" text="-" />
+      <Label layoutX="65.0" layoutY="162.0" text="-" />
+   </children>
+</AnchorPane>
