@@ -7,9 +7,9 @@
 
 <AnchorPane prefHeight="150.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inv.inventorymanagementapplication.EditController">
    <children>
-      <Button alignment="TOP_CENTER" layoutX="237.0" layoutY="63.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="Price" />
-      <Button alignment="TOP_CENTER" layoutX="125.0" layoutY="63.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="Serial Number" />
-      <Button alignment="TOP_CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="14.0" layoutY="63.0" mnemonicParsing="false" prefHeight="75.0" prefWidth="100.0" text="Name" />
+      <Button alignment="TOP_CENTER" contentDisplay="TOP" graphicTextGap="0.0" layoutX="14.0" layoutY="63.0" mnemonicParsing="false" onAction="#onNameClick" prefHeight="75.0" prefWidth="100.0" text="Name" />
+      <Button alignment="TOP_CENTER" layoutX="125.0" layoutY="63.0" mnemonicParsing="false" onAction="#onSerialClick" prefHeight="75.0" prefWidth="100.0" text="Serial Number" />
+      <Button alignment="TOP_CENTER" layoutX="237.0" layoutY="63.0" mnemonicParsing="false" onAction="#onPriceClick" prefHeight="75.0" prefWidth="100.0" text="Price" />
       <Label layoutX="99.0" layoutY="8.0" text="Select a Property to Edit:" textFill="#000000ba">
          <font>
             <Font name="System Bold" size="13.0" />

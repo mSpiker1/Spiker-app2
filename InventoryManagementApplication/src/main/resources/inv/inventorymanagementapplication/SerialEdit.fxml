@@ -4,26 +4,27 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="150" prefWidth="350" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inv.inventorymanagementapplication.SerialEdit">
+<AnchorPane prefHeight="150" prefWidth="350" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inv.inventorymanagementapplication.SerialController">
    <children>
-      <Button layoutX="51.0" layoutY="101.0" mnemonicParsing="false" text="Save" />
-      <TextField layoutX="240.0" layoutY="53.0" prefHeight="30.0" prefWidth="50.0" promptText="xxx">
-         <font>
-            <Font size="14.0" />
-         </font></TextField>
-      <TextField layoutX="170.0" layoutY="53.0" prefHeight="30.0" prefWidth="50.0" promptText="xxx">
-         <font>
-            <Font size="14.0" />
-         </font></TextField>
-      <TextField layoutX="100.0" layoutY="53.0" prefHeight="30.0" prefWidth="50.0" promptText="xxx">
-         <font>
-            <Font size="14.0" />
-         </font></TextField>
-      <TextField layoutX="50.0" layoutY="53.0" prefHeight="30.0" prefWidth="30.0" promptText="A">
+      <Button layoutX="50.0" layoutY="111.0" mnemonicParsing="false" onAction="#onBackClick" text="&lt; Back" />
+      <Button layoutX="110.0" layoutY="111.0" mnemonicParsing="false" onAction="#onSaveClick" text="Save" />
+      <TextField fx:id="serial1" layoutX="50.0" layoutY="53.0" prefHeight="30.0" prefWidth="30.0" promptText="A">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
+      <TextField fx:id="serial2" layoutX="100.0" layoutY="53.0" prefHeight="30.0" prefWidth="50.0" promptText="xxx">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="serial3" layoutX="170.0" layoutY="53.0" prefHeight="30.0" prefWidth="50.0" promptText="xxx">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
+      <TextField fx:id="serial4" layoutX="240.0" layoutY="53.0" prefHeight="30.0" prefWidth="50.0" promptText="xxx">
+         <font>
+            <Font size="14.0" />
+         </font></TextField>
       <Label layoutX="51.0" layoutY="26.0" text="Enter new serial number:" />
       <Label layoutX="227.0" layoutY="58.0" text="-">
          <font>
@@ -40,5 +41,6 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
+      <Label fx:id="errorLabel" layoutX="51.0" layoutY="88.0" textFill="RED" />
    </children>
 </AnchorPane>

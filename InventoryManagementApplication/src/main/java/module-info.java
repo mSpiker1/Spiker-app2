@@ -6,7 +6,8 @@ module inv.inventorymanagementapplication {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
     requires javafx.graphics;
+    requires com.google.gson;
 
-    opens inv.inventorymanagementapplication to javafx.fxml;
+    opens inv.inventorymanagementapplication to javafx.fxml, com.google.gson;
     exports inv.inventorymanagementapplication;
 }

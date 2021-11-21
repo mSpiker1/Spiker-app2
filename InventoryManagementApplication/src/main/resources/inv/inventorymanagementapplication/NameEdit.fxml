@@ -3,11 +3,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="150" prefWidth="350" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inv.inventorymanagementapplication.NameEdit">
+<AnchorPane prefHeight="150" prefWidth="350" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inv.inventorymanagementapplication.NameController">
    <children>
+      <Button layoutX="14.0" layoutY="114.0" mnemonicParsing="false" onAction="#onBackClick" text="&lt; Back" />
+      <Button layoutX="74.0" layoutY="114.0" mnemonicParsing="false" onAction="#onSaveClick" text="Save" />
       <Label layoutX="16.0" layoutY="5.0" text="Enter new name here:" />
-      <Label layoutX="208.0" layoutY="109.0" prefHeight="17.0" prefWidth="139.0" text="Character count: 0/256" textFill="#0000009b" />
-      <TextArea layoutX="14.0" layoutY="23.0" prefHeight="86.0" prefWidth="324.0" promptText="Enter Item Name..." />
-      <Button layoutX="14.0" layoutY="114.0" mnemonicParsing="false" text="Save" />
+      <Label fx:id="countLabel" layoutX="211.0" layoutY="91.0" prefHeight="17.0" prefWidth="139.0" text="Character count: 0/256" textFill="#0000009b" />
+      <TextArea fx:id="nameText" layoutX="14.0" layoutY="23.0" onKeyTyped="#onNameTyped" prefHeight="68.0" prefWidth="324.0" promptText="Enter Item Name..." />
+      <Label fx:id="errorLabel" layoutX="16.0" layoutY="93.0" textFill="RED" />
    </children>
 </AnchorPane>

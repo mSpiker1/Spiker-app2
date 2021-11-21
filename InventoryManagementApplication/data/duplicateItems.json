@@ -1,0 +1,62 @@
+[
+  {
+    "name": "RTX 3090",
+    "serial": "F-130-18J-X20",
+    "value": "$3499.00"
+  },
+  {
+    "name": "Playstation 5",
+    "serial": "B-34T-JKO-P09",
+    "value": "$499.99"
+  },
+  {
+    "name": "PKMN cards (5pk)",
+    "serial": "B-64K-LF7-994",
+    "value": "$8.99"
+  },
+  {
+    "name": "Smash Bros. Ultimate",
+    "serial": "T-8O3-PPK-J2L",
+    "value": "$59.99"
+  },
+  {
+    "name": "Nintendo Switch",
+    "serial": "H-15L-90P-BXC",
+    "value": "$299.99"
+  },
+  {
+    "name": "RTX 3080",
+    "serial": "B-740-9IE-YL0",
+    "value": "$1499.00"
+  },
+  {
+    "name": "RTX 3070",
+    "serial": "B-5KD-9NN-FT6",
+    "value": "$599.00"
+  },
+  {
+    "name": "RTX 2080ti",
+    "serial": "A-1GT-12G-5S3",
+    "value": "$999.00"
+  },
+  {
+    "name": "i7-9700k",
+    "serial": "B-23F-AA6-YW8",
+    "value": "$357.99"
+  },
+  {
+    "name": "32gb DDR4 Corsair Vengeance RAM",
+    "serial": "A-4FT-LS0-98F",
+    "value": "$149.99"
+  },
+  {
+    "name": "500gb NVMe Solid State Drive",
+    "serial": "A-223-Y6B-8JN",
+    "value": "$195.99"
+  },
+  {
+    "name": "500gb NVMe Solid State Drive",
+    "serial": "A-223-Y6B-8JN",
+    "value": "$195.99"
+  }
+]

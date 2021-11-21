@@ -2,20 +2,21 @@
 
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="inv.inventorymanagementapplication.MenuController">
    <children>
-      <TableView layoutX="14.0" layoutY="160.0" prefHeight="491.0" prefWidth="1337.0">
+      <TableView fx:id="mainTable" editable="true" layoutX="14.0" layoutY="160.0" prefHeight="491.0" prefWidth="1337.0">
         <columns>
-          <TableColumn prefWidth="627.0" resizable="false" text="Name" />
-          <TableColumn prefWidth="500.0" resizable="false" text="Serial Number" />
-            <TableColumn minWidth="0.0" prefWidth="209.0" resizable="false" text="Value" />
+          <TableColumn fx:id="nameCol" prefWidth="627.0" resizable="false" text="Name" />
+          <TableColumn fx:id="serCol" prefWidth="500.0" resizable="false" text="Serial Number" />
+            <TableColumn fx:id="valCol" minWidth="0.0" prefWidth="209.0" resizable="false" text="Value" />
         </columns>
       </TableView>
-      <TextField layoutX="14.0" layoutY="128.0" prefHeight="25.0" prefWidth="225.0" promptText="Search for an item..." />
-      <Button layoutX="14.0" layoutY="658.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Remove Item">
+      <TextField fx:id="searchBar" layoutX="14.0" layoutY="128.0" onKeyTyped="#searchKeyTyped" prefHeight="25.0" prefWidth="225.0" promptText="Search for an item..." />
+      <Button layoutX="14.0" layoutY="658.0" mnemonicParsing="false" onAction="#onRemoveClick" prefHeight="25.0" prefWidth="100.0" text="Remove Item">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -29,35 +30,35 @@
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
-              <MenuItem mnemonicParsing="false" text="Save file" />
-                  <MenuItem mnemonicParsing="false" text="Load file" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Settings">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Open settings..." />
+              <MenuItem mnemonicParsing="false" onAction="#selectSave" text="Save file" />
+                  <MenuItem mnemonicParsing="false" onAction="#selectLoad" text="Load file" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
-      <SplitMenuButton layoutX="246.0" layoutY="128.0" mnemonicParsing="false" text="Search by...">
+      <SplitMenuButton fx:id="searchDropdown" layoutX="246.0" layoutY="128.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="Search by...">
         <items>
-          <MenuItem mnemonicParsing="false" text="Name" />
-          <MenuItem mnemonicParsing="false" text="Serial Number" />
+          <MenuItem mnemonicParsing="false" onAction="#nameSearchSelect" text="Name" />
+          <MenuItem mnemonicParsing="false" onAction="#serialSearchSelect" text="Serial Number" />
         </items>
       </SplitMenuButton>
-      <Button layoutX="1118.0" layoutY="658.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="110.0" text="+ Add New Item" />
-      <Label fx:id="errorLabel" layoutX="361.0" layoutY="132.0" textFill="RED" />
-      <Label layoutX="1250.0" layoutY="140.0" text="Total Items: 0">
+      <Button layoutX="1118.0" layoutY="658.0" mnemonicParsing="false" onAction="#onAddClick" prefHeight="25.0" prefWidth="110.0" text="+ Add New Item" />
+      <Label fx:id="errorLabel" layoutX="372.0" layoutY="132.0" text=" " textFill="RED" />
+      <Label fx:id="itemCount" layoutX="1250.0" layoutY="140.0" text="Total Items: 0">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <Button layoutX="126.0" layoutY="658.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="100.0" text="Clear All Items" />
+      <Button layoutX="126.0" layoutY="658.0" mnemonicParsing="false" onAction="#onClearClick" prefHeight="25.0" prefWidth="100.0" text="Clear All Items" />
       <Label layoutX="12.0" layoutY="49.0" text="Inventory Manager">
          <font>
             <Font name="Copperplate Gothic Bold" size="48.0" />
          </font>
       </Label>
+      <ImageView fx:id="refreshButton" accessibleRole="BUTTON" fitHeight="33.0" fitWidth="30.0" layoutX="1312.0" layoutY="34.0" onMouseClicked="#onRefreshClick" onMouseEntered="#hoverRefresh" onMouseExited="#leaveRefresh" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/refresh.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
