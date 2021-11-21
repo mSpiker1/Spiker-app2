@@ -144,7 +144,7 @@ class FileLoader{
         FileLoader fl = new FileLoader();
 
         //boolean to store in case html file messes up loading
-        boolean htmlCatch = true;
+        boolean htmlCatch = false;
 
         //sonarlint doesnt like assigning htmlcatch within the switch statement as it makes the code hard to read,
         //but I'm adding a comment here specifically to explain that because this is an exception in which I need
