@@ -1,3 +1,197 @@
 @startuml
 
+InventoryManagementApplication --|> Application
+Item --* InvManager
+FileLoader --o MenuController
+FileSaver --o MenuController
+MenuController --* Application
+InvManager --o FileLoader
+InvManager --o FileSaver
+AppManager --* InventoryManagementApplication
+AppManager --o MenuController
+AppManager --* NameController
+AppManager --* PriceController
+AppManager --* SerialController
+AppManager --o EditController
+InvManager --o AppManager
+NameController --o Application
+PriceController --o Application
+SerialController --o Application
+EditController --o Application
+ConfirmController --o Application
+AppManager --* ConfirmController
+AddController --o Application
+InvManager --* AddController
+AddController --o MenuController
+EditController --o MenuController
+ConfirmController --o MenuController
+NameController --* EditController
+PriceController --* EditController
+SerialController --* EditController
+StringDoubleComparator --* MenuController
+
+class InventoryManagementApplication{
++void start(Stage primaryStage)
++static void main(String[] args)
+}
+
+class FileSaver{
++static void invToFile(String extension, File saveFile)
++void saveToJson(File saveFile)
++void saveToTsv(File saveFile)
++void saveToHtml(File saveFile)
+}
+
+class FileLoader{
++boolean invFromFile(String extension, File loadFile)
++void loadFromJson(File loadFile)
++void loadFromTsv(File loadFile)
++void loadFromHtml(File loadFile)
+}
+
+class AddController{
+-TextArea nameText
+-TextField serial1
+-TextField serial2
+-TextField serial3
+-TextField serial4
+-TextField priceText
+-Label countLabel
+-Label errorLabel
++void initialize(URL location, ResourceBundle resources)
+#void onNameTyped()
+#void onSaveClick()
+}
+
+class AppManager{
+-static Stage mainStage
+-static int confirm
+-static int searchMode
+-static Item currentItem
+-static final Stage popUp
+-static FXMLLoader mainFxml
++static boolean verifyPrice(String num)
++static boolean verifyName(String name)
++boolean serialMatch(String serial)
++boolean serialLoadTest()
++static void loadMainStage()
++static void popUp(int sceneNum, String title)
++static void closePopUp()
++static boolean popUpIsOpen()
++static void setMainStage(Stage stage)
++static void setConfirm(int newConfirm)
++static void setSearchMode(int search)
++static void setCurrentItem(Item newItem)
++static void setMainStageTitle(String newTitle)
++static int getConfirm()
++static int getSearchMode()
++static Item getCurrentItem()
++static FXMLLoader getMainMenuFxml
+}
+
+class ConfirmController{
+-Label promptLabel
++void initialize(URL location, ResourceBundle resources)
+#void onConfirmClick()
+#void onCancelClick()
++void clearConfirmed()
++void removeConfirmed()
+}
+
+class EditController{
+#void onNameClick()
+#void onSerialClick()
+#void onPriceClick()
+}
+
+class InvManager{
+-InvManager()
+-static final ObservableList<Item> mainList
++static ObservableList<Item> getList()
++static void setList(Item[] itemArray)
++static void sortByName(String search)
++static void sortBySerial(String search)
++static void addItem(Item addItem)
++static void editSerial(int itemNum, String newSerial)
++static void editName(int itemNum, String newName)
++static void editPrice(int itemNum, String newPrice)
++static void removeItem(int itemNum)
++static int getItemPos(Item matchItem)
++static void clearList()
+}
+
+class Item{
+-String name
+-String serial
+-String value
++void setName(String newName)
++void setSerial(String newSerial)
++void setValue(String newValue)
++String getName()
++String getSerial()
++String getValue()
+}
+
+class MenuController{
+-Label errorLabel
+-TableView<Item> mainTable
+-TableColumn<Item, String> nameCol
+-TableColumn<Item, String> serCol
+-TableColumn<Item, String> valCol
+-Label itemCount
+-ImageView refreshButton
+-SplitMenuButton searchDropdown
+-TextField searchBar
+-static final String POPUPOPEN
++void initialize(URL location, ResourceBundle resources)
+#void onAddClick()
+#void onEditClick()
+#void onRemoveClick()
+#void onClearClick()
+#void onRefreshClick()
+#void hoverRefresh()
+#void leaveRefresh()
+#void serialSearchSelect()
+#void nameSearchSelect()
+#void searchKeyTyped()
+#void selectLoad()
+#void selectSave()
++void setError(String error)
++void updateItemCount()
+}
+
+class StringDoubleComparator{
++int compare(String o1, String o2)
+}
+
+class NameController{
+-TextArea nameText
+-Label errorLabel
+-Label countLabel
++void initialize(URL location, ResourceBundle resources)
+#void onBackClick()
+#void onSaveClick()
+#void onNameTyped()
+}
+
+class PriceController{
+-Label errorLabel
+-TextField priceText
++void initialize(URL location, ResourceBundle resources)
+#void onBackClick()
+#void onSaveClick()
+}
+
+class SerialController{
+-Label errorLabel
+-TextField serial1
+-TextField serial2
+-TextField serial3
+-TextField serial4
++void initialize(URL location, ResourceBundle resources)
+#void onBackClick()
+#void onSaveClick()
+
+}
+
 @enduml

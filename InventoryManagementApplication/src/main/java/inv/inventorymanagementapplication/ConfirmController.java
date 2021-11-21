@@ -60,11 +60,16 @@ public class ConfirmController implements Initializable {
 
     //method for when list clear is confirmed
     public void clearConfirmed(){
+        //set up MenuController object
+        FXMLLoader loader = AppManager.getMainMenuFxml();
+        MenuController mc = loader.getController();
+
         //clear inventory list
         InvManager.clearList();
 
-        //reset main menu title to default
+        //reset main menu title to default and update item count
         AppManager.setMainStageTitle("Inventory Manager");
+        mc.updateItemCount();
     }
 
     //method for when remove is confirmed

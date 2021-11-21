@@ -91,7 +91,49 @@ class FileSaver{
 
     //method to save HTML files
     public void saveToHtml(File saveFile) throws IOException {
+        //create a FileWriter for saveFile
+        try (FileWriter writer = new FileWriter(saveFile)) {
+            //create a few constant strings to hold some repeated values
+            final String THS = "<td>";
+            final String TH = "</td>";
 
+            //write the first few lines of the html document to ensure it is valid
+            writer.write("<html>\n");
+            writer.write("<head>\n");
+            writer.write("<title>Inventory of "
+                    + saveFile.toString().substring(saveFile.toString().lastIndexOf("\\") + 1) + "</title>\n");
+            writer.write("</head>\n");
+            writer.write("<body>\n");
+
+            //open the table and write the table heading
+            writer.write("<table>\n");
+            writer.write("<thead>\n");
+            writer.write("<tr>\n");
+            writer.write("<th scope=\"col\">Serial Number</th>\n");
+            writer.write("<th scope=\"col\">Value</th>\n");
+            writer.write("<th scope=\"col\">Name</th>\n");
+            writer.write("</tr>\n");
+            writer.write("</thead>\n");
+            writer.write("<tbody>\n");
+
+            //write in each item from the list via a for loop
+            for (int i = 0; i < InvManager.getList().size(); i++) {
+                writer.write("<tr>\n");
+                writer.write("<th scope=\"row\">" + InvManager.getList().get(i).getSerial() + "</th>\n");
+                writer.write(THS + InvManager.getList().get(i).getValue() + TH + "\n");
+                writer.write(THS + InvManager.getList().get(i).getName() + TH + "\n");
+                writer.write("</tr>\n");
+            }
+
+            //close off the table and html document
+            writer.write("</tbody>\n");
+            writer.write("</table>\n");
+            writer.write("</body>\n");
+            writer.write("</html>\n");
+
+            //flush filewriter
+            writer.flush();
+        }
     }
 }
 
@@ -168,7 +210,39 @@ class FileLoader{
     }
 
     //method to load from HTML
-    public void loadFromHtml(File loadFile){
+    public void loadFromHtml(File loadFile) throws IOException {
+        //create buffered reader for loadFile
+        try (BufferedReader reader = new BufferedReader(new FileReader(loadFile))) {
+            //skip the next 13 lines
+            //sonarlint doesn't like skipping lines with buffered readers, but there's a reason
+            for(int i=0; i<13; i++){
+                reader.readLine();
+            }
 
+            //read the next 5 lines on loop to assign each set of strings to an item, looping to fill the main list
+            while (!reader.readLine().equals("</tbody>")) {
+                //read three lines to a string
+                String serial = reader.readLine();
+                String value = reader.readLine();
+                String name = reader.readLine();
+
+                //parse the strings to only be the values that should be shown in the tableview
+                serial = serial.substring(16, serial.length() - 5);
+                value = value.substring(4, value.length() - 5);
+                name = name.substring(4, name.length() - 5);
+
+                //assign the strings to an item
+                Item newItem = new Item();
+                newItem.setSerial(serial);
+                newItem.setValue(value);
+                newItem.setName(name);
+
+                //add the item to the list
+                InvManager.addItem(newItem);
+
+                //skip one line
+                reader.readLine();
+            }
+        }
     }
 }

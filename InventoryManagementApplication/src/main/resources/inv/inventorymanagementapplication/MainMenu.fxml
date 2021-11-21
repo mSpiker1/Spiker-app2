@@ -50,7 +50,7 @@
          </font>
       </Label>
       <Button layoutX="126.0" layoutY="658.0" mnemonicParsing="false" onAction="#onClearClick" prefHeight="25.0" prefWidth="100.0" text="Clear All Items" />
-      <Label layoutX="12.0" layoutY="49.0" text="Inventory Manager">
+      <Label layoutX="96.0" layoutY="50.0" text="Inventory Manager">
          <font>
             <Font name="Copperplate Gothic Bold" size="48.0" />
          </font>
@@ -58,6 +58,11 @@
       <ImageView fx:id="refreshButton" accessibleRole="BUTTON" fitHeight="33.0" fitWidth="30.0" layoutX="1312.0" layoutY="34.0" onMouseClicked="#onRefreshClick" onMouseEntered="#hoverRefresh" onMouseExited="#leaveRefresh" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../assets/refresh.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="86.0" fitWidth="77.0" layoutX="14.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../assets/managerLogo.png" />
          </image>
       </ImageView>
    </children>
