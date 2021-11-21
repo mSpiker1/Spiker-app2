@@ -8,11 +8,16 @@ MenuController --* Application
 InvManager --o FileLoader
 InvManager --o FileSaver
 AppManager --* InventoryManagementApplication
-AppManager --o MenuController
+AppSettings --o MenuController
 AppManager --* NameController
 AppManager --* PriceController
 AppManager --* SerialController
-AppManager --o EditController
+AppSettings --o EditController
+InvManager --o AppSettings
+AppSettings --o PriceController
+AppSettings --o NameController
+AppSettings --o SerialController
+AppSettings --o MenuController
 InvManager --o AppManager
 NameController --o Application
 PriceController --o Application
@@ -63,29 +68,32 @@ class AddController{
 #void onSaveClick()
 }
 
-class AppManager{
--static Stage mainStage
+class AppSettings{
 -static int confirm
 -static int searchMode
 -static Item currentItem
--static final Stage popUp
--static FXMLLoader mainFxml
 +static boolean verifyPrice(String num)
 +static boolean verifyName(String name)
 +boolean serialMatch(String serial)
 +boolean serialLoadTest()
++static void setConfirm(int newConfirm)
++static void setSearchMode(int search)
++static void setCurrentItem(Item newItem)
++static int getConfirm()
++static int getSearchMode()
++static Item getCurrentItem()
+}
+
+class AppManager{
+-static Stage mainStage
+-static final Stage popUp
+-static FXMLLoader mainFxml
 +static void loadMainStage()
 +static void popUp(int sceneNum, String title)
 +static void closePopUp()
 +static boolean popUpIsOpen()
 +static void setMainStage(Stage stage)
-+static void setConfirm(int newConfirm)
-+static void setSearchMode(int search)
-+static void setCurrentItem(Item newItem)
 +static void setMainStageTitle(String newTitle)
-+static int getConfirm()
-+static int getSearchMode()
-+static Item getCurrentItem()
 +static FXMLLoader getMainMenuFxml
 }
 

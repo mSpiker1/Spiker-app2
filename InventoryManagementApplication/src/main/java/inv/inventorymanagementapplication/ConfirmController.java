@@ -20,10 +20,10 @@ public class ConfirmController implements Initializable {
     //initialize method to load the proper prompt
     public void initialize(URL location, ResourceBundle resources){
         //if statement to determine the prompt
-        if(AppManager.getConfirm() == 1){
+        if(AppUtilSettings.getConfirm() == 1){
             //set label
             promptLabel.setText("Are you sure you want to clear the list?");
-        } else if(AppManager.getConfirm() == 2){
+        } else if(AppUtilSettings.getConfirm() == 2){
             //set label
             promptLabel.setText("Are you sure you want to remove this item?");
         }
@@ -33,19 +33,19 @@ public class ConfirmController implements Initializable {
     @FXML
     protected void onConfirmClick(){
         //if statement to determine what is being confirmed
-        if(AppManager.getConfirm() == 1){
+        if(AppUtilSettings.getConfirm() == 1){
             //call clearConfirmed method
             clearConfirmed();
-        } else if(AppManager.getConfirm() == 2){
+        } else if(AppUtilSettings.getConfirm() == 2){
             //call clearConfirmed method
             removeConfirmed();
 
             //reset currentItem to null
-            AppManager.setCurrentItem(null);
+            AppUtilSettings.setCurrentItem(null);
         }
 
         //reset the confirm value
-        AppManager.setConfirm(0);
+        AppUtilSettings.setConfirm(0);
 
         //close the confirmation window
         AppManager.closePopUp();
@@ -79,7 +79,7 @@ public class ConfirmController implements Initializable {
         MenuController mc = loader.getController();
 
         //get the currently selected item
-        Item item = AppManager.getCurrentItem();
+        Item item = AppUtilSettings.getCurrentItem();
 
         //get the position of the current item from InvManager's getItemPos method
         int itemPos = InvManager.getItemPos(item);

@@ -143,18 +143,25 @@ class FileLoader{
         //FileLoader class object
         FileLoader fl = new FileLoader();
 
+        //boolean to store in case html file messes up loading
+        boolean htmlCatch = true;
+
+        //sonarlint doesnt like assigning htmlcatch within the switch statement as it makes the code hard to read,
+        //but I'm adding a comment here specifically to explain that because this is an exception in which I need
+        //this variable to be assigned in order for the html parser to report issues if the file is not in the
+        //correct format.
         try {
             //switch statement for each extension case
             switch (extension) {
                 case "json" ->
-                        //call the savetojson method
+                        //call the loadFromJson method
                         fl.loadFromJson(loadFile);
                 case "txt" ->
-                        //call the savetotsv method
+                        //call the loadFromTsv method
                         fl.loadFromTsv(loadFile);
                 case "html" ->
-                        //call the savetohtml method
-                        fl.loadFromHtml(loadFile);
+                        //call the loadFromHtml method
+                        htmlCatch = fl.loadFromHtml(loadFile);
                 default ->
                         //default to json if file extension is not recognized
                         fl.loadFromJson(loadFile);
@@ -164,8 +171,10 @@ class FileLoader{
             return true;
         }
 
+        //return true if htmlCatch is true, as file was not loaded correctly
+        return htmlCatch;
+
         //return false, signifying that no errors occured
-        return false;
     }
 
     //method to load from json
@@ -210,12 +219,12 @@ class FileLoader{
     }
 
     //method to load from HTML
-    public void loadFromHtml(File loadFile) throws IOException {
+    public boolean loadFromHtml(File loadFile) throws IOException {
         //create buffered reader for loadFile
         try (BufferedReader reader = new BufferedReader(new FileReader(loadFile))) {
             //skip the next 13 lines
             //sonarlint doesn't like skipping lines with buffered readers, but there's a reason
-            for(int i=0; i<13; i++){
+            for(int i=0; i<14; i++){
                 reader.readLine();
             }
 
@@ -225,6 +234,11 @@ class FileLoader{
                 String serial = reader.readLine();
                 String value = reader.readLine();
                 String name = reader.readLine();
+
+                //if statement to catch wrong strings
+                if(serial.length() < 16){
+                    return true;
+                }
 
                 //parse the strings to only be the values that should be shown in the tableview
                 serial = serial.substring(16, serial.length() - 5);
@@ -244,5 +258,7 @@ class FileLoader{
                 reader.readLine();
             }
         }
+        //return false as long as method executes without issue
+        return false;
     }
 }

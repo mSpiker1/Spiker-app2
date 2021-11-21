@@ -47,9 +47,9 @@ public class SerialController implements Initializable {
                 change.getControlNewText().length() <= 3 ? change : null));
 
         //make sure current item is not null before trying to load this, or issues occur when loading other scenes
-        if(AppManager.getCurrentItem() != null) {
+        if(AppUtilSettings.getCurrentItem() != null) {
             //grab the current item's serial number and split it into the four parts without hyphens
-            String serial = AppManager.getCurrentItem().getSerial();
+            String serial = AppUtilSettings.getCurrentItem().getSerial();
             String[] s = serial.split("-");
 
             //set the TextFields to have the current serial number already displayed for the user
@@ -71,23 +71,23 @@ public class SerialController implements Initializable {
     @FXML
     protected void onSaveClick() throws IOException {
         //AppManager class object
-        AppManager am = new AppManager();
+        AppUtilSettings as = new AppUtilSettings();
 
         //combine all TextField inputs to one serial number string
         String serial = serial1.getText().toUpperCase() + "-" + serial2.getText().toUpperCase() + "-" +
                 serial3.getText().toUpperCase() + "-" + serial4.getText().toUpperCase();
 
         //verify that the serial number entered is a valid format
-        if(AppManager.verifySerial(serial)){
+        if(AppUtilSettings.verifySerial(serial)){
             //set error message and exit method if serial number is not correctly input
             errorLabel.setText("Error: Serial number fields not input correctly");
             return;
         }
 
         //verify that the serial number does not match an existing serial number
-        if(am.serialMatch(serial)){
+        if(as.serialMatch(serial)){
             //if serial number is the same as current item, display unique error and exit method
-            if(AppManager.getCurrentItem().getSerial().equals(serial)){
+            if(AppUtilSettings.getCurrentItem().getSerial().equals(serial)){
                 errorLabel.setText("Error: Serial number has not been changed");
                 return;
             }
@@ -98,7 +98,7 @@ public class SerialController implements Initializable {
         }
 
         //if method executes to this point, get the item in the list that is being edited
-        Item item = AppManager.getCurrentItem();
+        Item item = AppUtilSettings.getCurrentItem();
 
         //get the position in the list of the item
         int itemPos = InvManager.getItemPos(item);

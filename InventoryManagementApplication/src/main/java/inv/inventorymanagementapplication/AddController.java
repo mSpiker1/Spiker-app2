@@ -12,7 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
-
 import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
@@ -76,7 +75,7 @@ public class AddController implements Initializable {
     @FXML
     protected void onSaveClick(){
         //AppManager class object
-        AppManager am = new AppManager();
+        AppUtilSettings as = new AppUtilSettings();
 
         //convert all text fields to their respective strings
         String serial = serial1.getText().toUpperCase() + "-" + serial2.getText().toUpperCase() + "-" +
@@ -85,22 +84,22 @@ public class AddController implements Initializable {
         String price = priceText.getText();
 
         //verify all fields are properly input separately to output specific errors
-        if(AppManager.verifyName(name)){
+        if(AppUtilSettings.verifyName(name)){
             //set error message and exit method if name is not correctly input
             errorLabel.setText("Error: Name field is not input correctly");
             return;
-        } else if(AppManager.verifySerial(serial)){
+        } else if(AppUtilSettings.verifySerial(serial)){
             //set error message and exit method if serial number is not correctly input
             errorLabel.setText("Error: Serial number fields not input correctly");
             return;
-        } else if(AppManager.verifyPrice(price)){
+        } else if(AppUtilSettings.verifyPrice(price)){
             //set error message and exit method if price is not correctly input
             errorLabel.setText("Error: Price field is not input correctly");
             return;
         }
 
         //verify that the serial number does not match an existing serial number
-        if(am.serialMatch(serial)){
+        if(as.serialMatch(serial)){
             //set error label and exit method if a matching serial number is found
             errorLabel.setText("Error: Serial number already exists");
             return;

@@ -30,9 +30,9 @@ public class NameController implements Initializable {
                 change.getControlNewText().length() <= 256 ? change : null));
 
         //make sure current item is not null before trying to load this, or issues occur when loading other scenes
-        if(AppManager.getCurrentItem() != null) {
+        if(AppUtilSettings.getCurrentItem() != null) {
             //set the TextField to contain the current item's name already
-            nameText.setText(AppManager.getCurrentItem().getName());
+            nameText.setText(AppUtilSettings.getCurrentItem().getName());
 
             //update count label
             countLabel.setText("Character count: " + nameText.getText().length() + "/256");
@@ -50,18 +50,18 @@ public class NameController implements Initializable {
     @FXML
     protected void onSaveClick() throws IOException {
         //verify that the input price text is valid
-        if(AppManager.verifyName(nameText.getText())){
+        if(AppUtilSettings.verifyName(nameText.getText())){
             //display error and exit method if price field is not input correctly
             errorLabel.setText("Error: Name field not input correctly");
             return;
-        } else if(AppManager.getCurrentItem().getName().equals(nameText.getText())){
+        } else if(AppUtilSettings.getCurrentItem().getName().equals(nameText.getText())){
             //display a unique error label if price has not been changed and exit method
             errorLabel.setText("Error: Name has not been changed");
             return;
         }
 
         //get item that is being edited
-        Item item = AppManager.getCurrentItem();
+        Item item = AppUtilSettings.getCurrentItem();
 
         //get the position of the item in the list
         int itemPos = InvManager.getItemPos(item);

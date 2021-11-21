@@ -24,9 +24,9 @@ public class PriceController implements Initializable {
     //initialize method to run when scene is loaded
     public void initialize(URL location, ResourceBundle resources){
         //make sure current item is not null before trying to load this, or issues occur when loading other scenes
-        if(AppManager.getCurrentItem() != null) {
+        if(AppUtilSettings.getCurrentItem() != null) {
             //grab current item's price and remove $ char from it
-            String price = AppManager.getCurrentItem().getValue();
+            String price = AppUtilSettings.getCurrentItem().getValue();
             price = price.replace("$", "");
 
             //set the TextField to contain the current item's price already
@@ -45,11 +45,11 @@ public class PriceController implements Initializable {
     @FXML
     protected void onSaveClick() throws IOException {
         //verify that the input price text is valid
-        if(AppManager.verifyPrice(priceText.getText())){
+        if(AppUtilSettings.verifyPrice(priceText.getText())){
             //display error and exit method if price field is not input correctly
             errorLabel.setText("Error: Price field not input correctly");
             return;
-        } else if(AppManager.getCurrentItem().getValue().equals(priceText.getText())){
+        } else if(AppUtilSettings.getCurrentItem().getValue().equals(priceText.getText())){
             //display a unique error label if price has not been change and exit method
             errorLabel.setText("Error: Price has not been changed");
             return;
@@ -60,7 +60,7 @@ public class PriceController implements Initializable {
         String price = "$" + cents.format(Double.parseDouble(priceText.getText()));
 
         //get item that is being edited
-        Item item = AppManager.getCurrentItem();
+        Item item = AppUtilSettings.getCurrentItem();
 
         //get the position of the item in the list
         int itemPos = InvManager.getItemPos(item);

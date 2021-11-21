@@ -101,7 +101,7 @@ public class MenuController implements Initializable {
         }
 
         //set the current item in AppManager (used by EditController)
-        AppManager.setCurrentItem(item);
+        AppUtilSettings.setCurrentItem(item);
 
         //create a new stage with the EditMenu fxml scene
         AppManager.popUp(0, "Edit an Item");
@@ -123,7 +123,7 @@ public class MenuController implements Initializable {
         setError("");
 
         //set confirm to 2 for remove item (used by ConfirmController)
-        AppManager.setConfirm(2);
+        AppUtilSettings.setConfirm(2);
 
         //grab the current item from the table view
         Item item = mainTable.getSelectionModel().getSelectedItem();
@@ -135,7 +135,7 @@ public class MenuController implements Initializable {
         }
 
         //set the current item in AppManager (used by ConfirmController)
-        AppManager.setCurrentItem(item);
+        AppUtilSettings.setCurrentItem(item);
 
         //open the confirmation popUp window
         AppManager.popUp(1, "Confirm Selection");
@@ -154,7 +154,7 @@ public class MenuController implements Initializable {
         }
 
         //set confirm to 1 for clear list (used by ConfirmController)
-        AppManager.setConfirm(1);
+        AppUtilSettings.setConfirm(1);
 
         //open the confirmation popUp window
         AppManager.popUp(1, "Confirm Selection");
@@ -177,7 +177,7 @@ public class MenuController implements Initializable {
 
         //reset search dropdown
         searchDropdown.setText("Search by...");
-        AppManager.setSearchMode(0);
+        AppUtilSettings.setSearchMode(0);
     }
 
     //hovering refresh button
@@ -198,7 +198,7 @@ public class MenuController implements Initializable {
     @FXML
     protected void serialSearchSelect(){
         //set search mode integer to 2
-        AppManager.setSearchMode(2);
+        AppUtilSettings.setSearchMode(2);
 
         //change the text on the search bar to "Serial Number"
         searchDropdown.setText("Serial Number");
@@ -217,7 +217,7 @@ public class MenuController implements Initializable {
     @FXML
     protected void nameSearchSelect(){
         //set search mode integer to 1
-        AppManager.setSearchMode(1);
+        AppUtilSettings.setSearchMode(1);
 
         //change the text on the search bar to "Name"
         searchDropdown.setText("Name");
@@ -241,10 +241,10 @@ public class MenuController implements Initializable {
         }
 
         //if statement to determine which search function to call
-        if(AppManager.getSearchMode() == 1){
+        if(AppUtilSettings.getSearchMode() == 1){
             //call searchByName method in InvManager
             InvManager.sortByName(searchBar.getText());
-        } else if(AppManager.getSearchMode() == 2){
+        } else if(AppUtilSettings.getSearchMode() == 2){
             //call searchBySerial method in InvManager
             InvManager.sortBySerial(searchBar.getText());
         }
@@ -254,7 +254,7 @@ public class MenuController implements Initializable {
     @FXML
     protected void selectLoad(){
         //AppManager class object
-        AppManager am = new AppManager();
+        AppUtilSettings as = new AppUtilSettings();
 
         //check if another window is already open, if so, end method with error
         if(AppManager.popUpIsOpen()){
@@ -302,7 +302,7 @@ public class MenuController implements Initializable {
         }
 
         //call serialLoadTest to test if any duplicate serial numbers are in the list
-        if(!am.serialLoadTest()){
+        if(!as.serialLoadTest()){
             //if a match is found, clear the list and set the error label, exit method
             errorLabel.setText("Error: Duplicate items were found, unable to load");
             InvManager.clearList();
