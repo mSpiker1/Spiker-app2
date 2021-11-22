@@ -109,6 +109,9 @@ public class AddController implements Initializable {
         DecimalFormat cents = new DecimalFormat("0.00");
         price = "$" + cents.format(Double.parseDouble(price));
 
+        //remove newline characters from name, if they exist
+        name = name.replace("\n", "");
+
         //create a new item and fill it with the appropriate strings
         Item newItem = new Item();
         newItem.setName(name);

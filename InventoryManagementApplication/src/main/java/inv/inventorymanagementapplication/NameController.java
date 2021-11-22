@@ -66,8 +66,12 @@ public class NameController implements Initializable {
         //get the position of the item in the list
         int itemPos = InvManager.getItemPos(item);
 
+        //remove newline characters from name, if they exist
+        String name = nameText.getText();
+        name = name.replace("\n", "");
+
         //replace item #itemPos's Value with new value string
-        InvManager.editName(itemPos, nameText.getText());
+        InvManager.editName(itemPos, name);
 
         //return to main edit menu
         AppManager.popUp(0, "Edit an Item");
