@@ -49,7 +49,7 @@ public class PriceController implements Initializable {
             //display error and exit method if price field is not input correctly
             errorLabel.setText("Error: Price field not input correctly");
             return;
-        } else if(AppUtilSettings.getCurrentItem().getValue().equals(priceText.getText())){
+        } else if(AppUtilSettings.getCurrentItem().getValue().equals("$" + priceText.getText())){
             //display a unique error label if price has not been change and exit method
             errorLabel.setText("Error: Price has not been changed");
             return;
