@@ -7,7 +7,7 @@ thousands of items. Each item in an inventory has three parameters: Name, serial
 The application should be intuitive and difficult to break as many error catches have been implemented while
 building the application, and while I'm sure it's far from perfect, it is most certainly functional on a
 more than acceptable level. The gui is built to be simple but descriptive so as to be user friendly, making
-managing an inventory a smooth experience.4:14 AM 11/21/2021
+managing an inventory a smooth experience.
 
 # Application functionality Guide
 Guide format:
